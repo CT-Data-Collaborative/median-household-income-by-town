@@ -116,6 +116,16 @@
       "value": "Income",
       "type": "string"
     },
+    "numerator": {
+      "ckan_name": "Numerator",
+      "value": "Median household income, disaggregated by race/ethnicity, for a given year and Town",
+      "type": "string"
+    },
+    "denominator": {
+      "ckan_name": "Denominator",
+      "value": "State median income for given year",
+      "type": "string"
+    },    
     "geography": {
       "ckan_name": "Geography",
       "value": "Town",
