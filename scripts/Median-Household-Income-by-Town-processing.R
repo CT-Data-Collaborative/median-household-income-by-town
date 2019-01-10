@@ -1,8 +1,8 @@
 library(dplyr)
 library(acs)
-library(datapkg)
 library(tidyr)
 source('./scripts/acsHelpers.R')
+source('./scripts/datapkg_read.R')
 
 ##################################################################
 #
@@ -16,7 +16,7 @@ source('./scripts/acsHelpers.R')
 sub_folders <- list.files()
 raw_location <- grep("raw", sub_folders, value=T)
 path_to_raw_data <- (paste0(getwd(), "/", raw_location))
-x2016_files <- dir(path_to_raw_data, recursive=T, pattern = "ACS")
+x2016_files <- dir(paste0(path_to_raw_data,"/",2016), recursive=T, pattern = "ACS")
 
 #Get state data
 geography=geo.make(state=09)
@@ -155,7 +155,7 @@ races_for_2016 <- c("White Alone", "Black or African American Alone", "American 
            "Two or More Races", "White Alone Not Hispanic or Latino", "Hispanic or Latino", "All")
 x2016_data <- data.frame(stringsAsFactors = FALSE)
 for (i in 1:length(x2016_files)) {
-  data <- read.acs(paste0(path_to_raw_data, "/", x2016_files[i]), endyear=2016, span=5)
+  data <- read.acs(paste0(path_to_raw_data, "/2016/", x2016_files[i]), endyear=2016, span=5)
   race <- races_for_2016[i]
   year <- data@endyear
   year <- paste(year-4, year, sep="-")
