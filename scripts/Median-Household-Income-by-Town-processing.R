@@ -247,7 +247,7 @@ data_long <- data_long %>%
 
 write.table(
     data_long,
-    file.path("data", "median-household-income-town-2016.csv"),
+    file.path("data", "median-household-income-town-2016+.csv"),
     sep = ",",
     row.names = F,
     na = "-9999" 

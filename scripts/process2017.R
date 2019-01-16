@@ -18,9 +18,14 @@ path_to_raw_data <- (paste0(getwd(), "/", raw_location))
 x2017_files <- dir(paste0(path_to_raw_data,"/2017"), recursive=F, pattern = "ACS") 
 
 #process 2017 data
-races_for_2017 <- c("White Alone", "Black or African American Alone", "American Indian and Alaska Native Alone", 
-                    "Asian Alone", "Native Hawaiian and Other Pacific Islander", "Some Other Race Alone", 
-                    "Two or More Races", "White Alone Not Hispanic or Latino", "Hispanic or Latino", "All")
+#races_for_2017 <- c("White Alone", "Black or African American Alone", "American Indian and Alaska Native Alone", 
+#                    "Asian Alone", "Native Hawaiian and Other Pacific Islander", "Some Other Race Alone", 
+#                    "Two or More Races", "White Alone Not Hispanic or Latino", "Hispanic or Latino", "All")
+
+races_for_2017 <- c("All", "White Alone", "Black or African American Alone", "American Indian and Alaska Native Alone", 
+           "Asian Alone", "Native Hawaiian and Other Pacific Islander", "Some Other Race Alone", 
+           "Two or More Races", "White Alone Not Hispanic or Latino", "Hispanic or Latino")
+
 x2017_data <- data.frame(stringsAsFactors = FALSE)
 for (i in 1:length(x2017_files)) {
   data <- read.acs(paste0(path_to_raw_data, "/2017/", x2017_files[i]), endyear=2017, span=5)
@@ -108,4 +113,4 @@ upto2017 <- upto2017 %>%
   select(Town, FIPS, Year, `Race/Ethnicity`, `Measure Type`, Variable, Value) %>% 
   arrange(Town, Year, `Race/Ethnicity`, `Measure Type`, Variable)
 
-WriteDFToTable(upto2017, "median-household-income-town-2017.csv")
+WriteDFToTable(upto2017, "median-household-income-town-2017+.csv")
