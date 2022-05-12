@@ -20,7 +20,7 @@ x2016_files <- dir(path_to_raw_data, recursive=T, pattern = "ACS")
 
 #Get state data
 geography=geo.make(state=09)
-yearlist=c(2009:2015)
+yearlist=c(2009:2016)
 span = 5
 col.names="pretty" 
 key="ed0e58d2538fb239f51e01643745e83f380582d7"
@@ -247,7 +247,7 @@ data_long <- data_long %>%
 
 write.table(
     data_long,
-    file.path("data", "median-household-income-town-2016.csv"),
+    file.path("data", "median-household-income-town-2016_test.csv"),
     sep = ",",
     row.names = F,
     na = "-9999" 
